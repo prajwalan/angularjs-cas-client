@@ -1,0 +1,50 @@
+<html ng-app="myApp">
+  <head>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.3.15/angular-route.min.js"></script>
+    <script src="https://code.angularjs.org/1.3.15/angular-cookies.min.js"></script>
+
+    <script src="js/main.js"></script>
+    <style type='text/css'>
+        pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
+        .string { color: green; }
+        .number { color: darkorange; }
+        .boolean { color: blue; }
+        .null { color: magenta; }
+        .key { color: black; }
+    </style>
+    <script type='text/javascript'>
+        function syntaxHighlight(json) {
+            json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+                var cls = 'number';
+                if (/^"/.test(match)) {
+                    if (/:$/.test(match)) {
+                        cls = 'key';
+                    } else {
+                        cls = 'string';
+                    }
+                } else if (/true|false/.test(match)) {
+                    cls = 'boolean';
+                } else if (/null/.test(match)) {
+                    cls = 'null';
+                }
+                return '<span class="' + cls + '">' + match + '</span>';
+            });
+        }
+    </script>
+  </head>
+    <body>
+        <div ng-controller="RESTController">
+            <p>
+            <button ng-click="login()" class="button" >Login</button>
+            <button ng-click="getBooks()" class="button" ng-disabled="btn_disabled">Get Books</button>
+            <button ng-click="addBook()" class="button" ng-disabled="btn_disabled">Add Book</button>
+            <button ng-click="logout()" class="button" ng-disabled="btn_disabled">Logout</button>
+            </p>
+            <br />
+            <pre id="json"></pre>
+        </div>
+    </body>
+</html>
