@@ -8,7 +8,7 @@ And we have a REST based web service at following location: `https://localhost:8
 
 From the web browser one can login to the CAS through `https://localhost:8443/cas/login` and execute the HTTP calls to the library service.
 But when we need to access it programatically, we have following two options:
-- Either fetch the login ticket send it along with username and password to `/cas/login` 
+- Either fetch the login ticket and send it along with username and password to `/cas/login` 
 - Or use the RESTful CAS approach.
 
 Problem with the first approach can be CORS related hassles because the authentication will be traditional session cookie based. And this does not play that well with CORS as the OPTIONS header do not carry session cookies.
