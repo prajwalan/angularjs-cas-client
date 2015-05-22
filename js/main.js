@@ -50,7 +50,7 @@ app.controller('RESTController', function (cfg, $scope, $http, $window) {
                         
         $http({
             method : 'POST',
-            url : cfg.casurl_base + "/login?method=POST",
+            url : cfg.casurl_base + "/login",
             headers : {
                 'Content-Type' : 'application/x-www-form-urlencoded'
             },
